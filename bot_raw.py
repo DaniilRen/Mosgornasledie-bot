@@ -1,14 +1,8 @@
-# for VDS
-import os, sys
-activate_this = '/home/Mosgornasledie-bot/venv/bin/activate_this.py'
-with open(activate_this) as f:
-	exec(f.read(), {'__file__': activate_this})
-
-
 from dotenv import load_dotenv
 from telebot import telebot
 from telebot import types
 import db
+import os
 
 load_dotenv()
 API_TOKEN = os.getenv('API_TOKEN')
