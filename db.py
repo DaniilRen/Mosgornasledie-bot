@@ -61,8 +61,3 @@ def get_all_projects():
 
 def get_project_by_id(pid: int):
 	return Project.select().where(Project.id==pid)[0]
-
-# create_schema()
-# fill_db()
-
-print(get_project_by_id(1).name)
