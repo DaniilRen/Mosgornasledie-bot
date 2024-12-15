@@ -18,46 +18,89 @@ class Project(BaseModel):
 	id = AutoField()  # Auto-incrementing primary key.
 	name = CharField(unique=True)
 	desc = CharField()
-	date = CharField(max_length=300)
-	url = CharField()
 	photo = CharField()
 	created_date = DateTimeField(default=datetime.datetime.now)
 
 	class Meta:
-			table_name = 'projects'
+		table_name = 'projects'
+
+
+class Link(BaseModel):
+	id = AutoField()  # Auto-incrementing primary key.
+	project_id = ForeignKeyField(Project, backref='project_id')
+	name = CharField()
+	url = CharField()
+
+	class Meta:
+		table_name = 'links'
 
 
 def create_schema() -> None:
-	db.create_tables([Project])
+	db.create_tables([Project, Link])
 
 
 def fill_db() -> None:
+	errors = list()
 	PROJECTS_DATA = os.getenv("PROJECTS_DATA")
 	with open(PROJECTS_DATA, encoding='utf-8') as f:
 		projects_arr = json.load(f)
-		for pr in projects_arr:
-			resp = add_project(**pr)
-			print(resp)
+		for project in projects_arr:
+			resp = add_project(**project)
+			if resp["Status"] == "Error":
+				errors.append(resp)
+	LINKS_DATA = os.getenv("LINKS_DATA")
+	with open(LINKS_DATA, encoding='utf-8') as f:
+		links_arr = json.load(f)
+		for link in links_arr:
+			resp = add_link(**link)
+			if resp["Status"] == "Error":
+				errors.append(resp)
+
+	print("Inserted data to db !")
+	print(f"Errors: {len(errors)}")
+	if len(errors) != 0:
+		for i, err in enumerate(errors):
+			print(f"{i}. {err}")
 
 
 def add_project(**project_data) -> dict:
 	error = None
-	name = project_data["name"]
 	try:
 		photo_path = os.path.join("assets", project_data["photo"])
-		project = Project(name=name, desc=project_data["desc"], date=project_data["date"],
-			url=project_data["url"], photo=photo_path)
+		project = Project(name=project_data["name"],
+											desc=project_data["desc"],
+											photo=photo_path)
 		project.save()
 	except Exception as e:
 			error = e
 	if not error is None:
-		return {f'Error while adding {name}': error}
-	return {f'adding {name}': 'success'}
+		return {"Status": "Error", "Error desc": error, "row": project_data['name']}
+	else:
+		return {"Status": "Success", "row": project_data['name']}
+
+
+def add_link(**link_data) -> dict:
+	error = None
+	try:
+		link = Link(url=link_data["url"], 
+									project_id=link_data["project_id"],
+									name=link_data["name"])
+		link.save()
+	except Exception as e:
+			error = e
+	if not error is None:
+		return {"Status": "Error", "Error desc": error, "row": link_data['name']}
+	else:
+		return {"Status": "Success", "row": link_data['name']}
 
 
 def get_all_projects():
-	return Project.select().order_by(Project.created_date.desc())
+	return Project.select().order_by(Project.created_date)
 
 
-def get_project_by_id(pid: int):
-	return Project.select().where(Project.id==pid)[0]
+def get_project_links(project_id: int):
+	return Link.select().where(Link.project_id==project_id)
+
+
+def get_project_by_id(id: int):
+	return Project.select().where(Project.id==id)[0]
