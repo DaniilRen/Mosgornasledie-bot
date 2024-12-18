@@ -1,32 +1,97 @@
 [
 	{
-		"name": "Страница проекта",
+		"name": "Анкета",
 		"url": "https://xn----7sbkimadlqkrcwu8q.xn--p1ai/",
 		"project_id": 1
 	},
 	{
-		"name": "Страница проекта",
+		"name": "Истории",
+		"url": "https://xn----7sbkimadlqkrcwu8q.xn--p1ai/",
+		"project_id": 1
+	},
+	{
+		"name": "Фотогалерея",
 		"url": "https://www.xn--80aaakefbazooqglkcc7ai.xn--p1ai/",
 		"project_id": 2
 	},
 	{
-		"name": "Страница проекта",
-		"url": "http://www.heritagemuseum.ru/",
+		"name": "Победители",
+		"url": "https://disk.yandex.ru/d/3xzBbQ4goD-NNQ",
+		"project_id": 2
+	},
+	{
+		"name": "Подать заявку",
+		"url": "*прием заявок завершился*. Новый конкурс начнется в феврале 2025 года.",
+		"project_id": 2
+	},
+	{
+		"name": "Объекты культурного наследия в 3D",
+		"url": "https://armsk.heritagemuseum.ru/main",
 		"project_id": 3
 	},
 	{
-		"name": "Страница проекта",
+		"name": "Археологическая выставка",
+		"url": "https://xn--80aaaaibdpb3axee5bb2aydt1c9bxf4d.heritagemuseum.ru/",
+		"project_id": 3
+	},
+	{
+		"name": "Выставка «Архитектура и мода. В потоке времени»",
+		"url": "https://xn--80aaapdrcouupdxcp0a.heritagemuseum.ru/",
+		"project_id": 3
+	},
+	{
+		"name": "Конкурс",
+		"url": "https://forumnasledie.ru/konkurs",
+		"project_id": 4
+	},
+	{
+		"name": "Деловая программа",
+		"url": "https://forumnasledie.ru/delovayaprogramma",
+		"project_id": 4
+	},
+	{
+		"name": "Фестиваль",
+		"url": "https://forumnasledie.ru/festival",
+		"project_id": 4
+	},
+	{
+		"name": "Экскурсионная программа",
 		"url": "https://forumnasledie.ru/",
 		"project_id": 4
 	},
 	{
-		"name": "Страница проекта",
-		"url": "https://dninaslediya.ru/",
+		"name": "Образовательная программа",
+		"url": "https://forumnasledie.ru/obrazovanie",
+		"project_id": 4
+	},
+	{
+		"name": "Запись на экскурсии",
+		"url": "https://um.mos.ru/excursions/",
 		"project_id": 5
 	},
 	{
-		"name": "Страница проекта",
-		"url": "https://www.mos.ru/dkn/function/populiarizatciia/izdaniya/",
+		"name": "Тематика Дней наследия",
+		"url": "https://um.mos.ru/selections-page/",
+		"project_id": 5
+	},
+	{
+		"name": "Журнал «Московское наследие»",
+		"url": "https://www.mos.ru/dkn/function/populiarizatciia/zhurnal-moskovskoe-nasledie/",
+		"project_id": 6
+	},
+	{
+		"name": "Детский журнал «Привет, Москвовед!»",
+		"url": "https://www.mos.ru/dkn/function/populiarizatciia/detskii-zhurnal-privet-moskvoved/",
+		"project_id": 6
+	},
+	{
+		"name": "Книги для детей",
+		"url": "https://www.mos.ru/dkn/function/populiarizatciia/izdaniya/?page=1",
+		"project_id": 6
+	},
+	{
+		"name": "Книги для взрослых",
+		"url": "https://www.mos.ru/dkn/function/populiarizatciia/izdaniya/?page=1",
 		"project_id": 6
 	},
 	{
@@ -36,22 +101,47 @@
 	},
 	{
 		"name": "Страница проекта",
-		"url": "https://dknprojects.ru/new-year",
+		"url": "https://www.mos.ru/dkn/function/populiarizatciia/konkurs-na-luchshii-proekt-v-oblasti-sokhraneniia-i-populiarizatcii-obektov-kulturnogo-naslediia/",
 		"project_id": 8
 	},
 	{
-		"name": "Страница проекта",
-		"url": "https://www.mos.ru/dkn/function/populiarizatciia/konkurs-na-luchshii-proekt-v-oblasti-sokhraneniia-i-populiarizatcii-obektov-kulturnogo-naslediia/",
+		"name": "Программа",
+		"url": "https://xn--80aafks5agibdim0dxg.xn--p1ai/",
 		"project_id": 9
 	},
 	{
-		"name": "Страница проекта",
-		"url": "https://xn--80aafks5agibdim0dxg.xn--p1ai/",
+		"name": "Соревнования молодых реставраторов",
+		"url": "https://xn--80aafks5agibdim0dxg.xn--p1ai/#sv",
+		"project_id": 9
+	},
+	{
+		"name": "Байки реставраторов",
+		"url": "https://www.mos.ru/news/item/120713073/",
 		"project_id": 10
 	},
 	{
-		"name": "Ссылка на телеграм-бот",
+		"name": "Голоса московских зданий",
+		"url": "https://www.mos.ru/news/item/147676073/",
+		"project_id": 10
+	},
+	{
+		"name": "Реставрация в деталях",
+		"url": "https://music.yandex.ru/album/16343561?activeTab=about&dir=desc",
+		"project_id": 10
+	},
+	{
+		"name": "Прогулки по Москве",
+		"url": "https://radiokp.ru/people/aleksey-emelyanov#podcast",
+		"project_id": 10
+	},
+	{
+		"name": "Чат-бот",
 		"url": "https://t.me/levhranitel_bot",
+		"project_id": 11
+	},
+	{
+		"name": "Мультфильмы",
+		"url": "https://rutube.ru/plst/736778/ ",
 		"project_id": 11
 	}
 ]

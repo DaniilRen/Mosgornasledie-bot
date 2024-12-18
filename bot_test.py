@@ -44,7 +44,10 @@ def send_project_details(call):
 		if len(pr_links) != 0:
 			msg += "\n"
 			for link in pr_links:
-				msg += f"[{link.name}]({link.url})\n"
+				if link.id == 5:
+					msg += f"{link.name}: {link.url}\n"
+				else:
+					msg += f"[{link.name}]({link.url})\n"
 		with open(pr_data.photo, "rb") as photo:
 			bot.send_photo(call.message.chat.id, photo)
 		bot.send_message(call.message.chat.id, msg, parse_mode= 'Markdown')
