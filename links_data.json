@@ -1,11 +1,11 @@
 [
 	{
-		"name": "Анкета",
+		"name": "Формируем книгу-памятников героев вместе",
 		"url": "https://xn----7sbkimadlqkrcwu8q.xn--p1ai/",
 		"project_id": 1
 	},
 	{
-		"name": "Истории",
+		"name": "Истории памятников-героев Москвы ",
 		"url": "https://xn----7sbkimadlqkrcwu8q.xn--p1ai/",
 		"project_id": 1
 	},
@@ -25,7 +25,7 @@
 		"project_id": 2
 	},
 	{
-		"name": "Объекты культурного наследия в 3D",
+		"name": "Трехмерные модели объектов культурного наследия",
 		"url": "https://armsk.heritagemuseum.ru/main",
 		"project_id": 3
 	},
@@ -65,13 +65,8 @@
 		"project_id": 4
 	},
 	{
-		"name": "Запись на экскурсии",
+		"name": "Следите за новостями Департамента",
 		"url": "https://um.mos.ru/excursions/",
-		"project_id": 5
-	},
-	{
-		"name": "Тематика Дней наследия",
-		"url": "https://um.mos.ru/selections-page/",
 		"project_id": 5
 	},
 	{
@@ -95,12 +90,12 @@
 		"project_id": 6
 	},
 	{
-		"name": "Страница проекта",
+		"name": "Ссылка",
 		"url": "https://um.mos.ru/moskovskiy-kod/",
 		"project_id": 7
 	},
 	{
-		"name": "Страница проекта",
+		"name": "Ссылка",
 		"url": "https://www.mos.ru/dkn/function/populiarizatciia/konkurs-na-luchshii-proekt-v-oblasti-sokhraneniia-i-populiarizatcii-obektov-kulturnogo-naslediia/",
 		"project_id": 8
 	},

@@ -1,0 +1,165 @@
+[
+	{
+		"text": "Церковь Вознесения Господня в музее-заповеднике «Коломенское»",
+		"position": 0,
+		"name": "church.jpg",
+		"project_id": 1
+	},
+	{
+		"text": "Северный речной вокзал. Автор: Наталья Рябая",
+		"position": 0,
+		"name": "contest-1.jpg",
+		"project_id": 2
+	},
+	{
+		"text": "Панорама улицы Варварка, открытка начала XX века",
+		"position": 0,
+		"name": "moscow.jpg",
+		"project_id": 3
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "3d-house.png",
+		"project_id": 3
+	},
+	{
+		"text": "На выставке представлены артефакты, найденные столичными археологами преимущественно за последние 14 лет.",
+		"position": 1,
+		"name": "vase.jpg",
+		"project_id": 3
+	},
+	{
+		"text": "Выставка «Архитектура и мода. В потоке времени» позволяет проследить взаимосвязь архитектуры и моды: узнать, как тенденции времени проявлялись в исторических зданиях городаи в модных образах его жителей.",
+		"position": 1,
+		"name": "archetucture-mode.jpg",
+		"project_id": 3
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "nasledie-1.jpg",
+		"project_id": 4
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "nasledie-2.jpg",
+		"project_id": 4
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "nasledie-3.jpg",
+		"project_id": 4
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "nasledie-4.jpg",
+		"project_id": 4
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "nasledie-5.jpg",
+		"project_id": 4
+	},
+	{
+		"text": "Запись на экскурсии Дни исторического и культурного наследия пройдут с 18 апреля по 31 мая 2025 года. Программа экскурсий появится на портале «Узнай Москву»",
+		"position": 0,
+		"name": "culture-days.jpg",
+		"project_id": 5
+	},
+	{
+		"text": "",
+		"position": 0,
+		"name": "izdania-1.jpg",
+		"project_id": 6
+	},
+	{
+		"text": "Специальный выпуск журнала «Московское Наследие», создаваемый студентами.",
+		"position": 1,
+		"name": "izdania-2.jpg",
+		"project_id": 6
+	},
+	
+	{
+		"text": "Это первый журнал Мосгорнаследия, созданный специально для детской аудитории, который знакомит юных читателей с историей и архитектурным наследием столицы. На страницах журнала дети в сопровождении символа Мосгорнаследия Льва-хранителя смогут раскрыть тайны города, узнавать интересные факты и просто вдохновляться на прогулки по любимой Москве.",
+		"position": 1,
+		"name": "izdania-3.jpg",
+		"project_id": 6
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "izdania-4.png",
+		"project_id": 6
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "izdania-5.png",
+		"project_id": 6
+	},
+	{
+		"text": "",
+		"position": 0,
+		"name": "mosc-kod-1.jpg",
+		"project_id": 7
+	},
+	{
+		"text": "",
+		"position": 0,
+		"name": "project-contest.jpg",
+		"project_id": 8
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "rest-old-man.png",
+		"project_id": 9
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "group-photo.jpg",
+		"project_id": 9
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "baiki.jpg",
+		"project_id": 10
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "golosa-zdaniy.jpg",
+		"project_id": 10
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "rest-v-det.jpg",
+		"project_id": 10
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "progulki.jpg",
+		"project_id": 10
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "lev.jpg",
+		"project_id": 11
+	},
+	{
+		"text": "",
+		"position": 1,
+		"name": "mult.png",
+		"project_id": 11
+	}
+]

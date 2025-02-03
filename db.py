@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from dotenv import load_dotenv
 import os
 import json
@@ -9,11 +10,13 @@ DB_PATH = os.getenv('DB_PATH')
 db = SqliteDatabase(DB_PATH)
 
 
+""" Базовая таблица """
 class BaseModel(Model):
 	class Meta:
 		database = db
 
 
+""" Таблица проектов """
 class Project(BaseModel):
 	id = AutoField()  # Auto-incrementing primary key.
 	name = CharField(unique=True)
@@ -24,7 +27,29 @@ class Project(BaseModel):
 	class Meta:
 		table_name = 'projects'
 
+	def get_env_data_path() -> str:
+		return 'PROJECT_DATA'
 
+	def insert_data(**data) -> dict:
+		error = None
+		try:
+			photo_path = os.path.join("assets", data["photo"])
+			row = Project(name=data["name"],
+												desc=data["desc"],
+												photo=photo_path)
+			row.save()
+		except Exception as e:
+				error = e
+		if not error is None:
+			return {"Status": "Error", "Error desc": error, "row": data['name']}
+		else:
+			return {"Status": "Success", "row": data['name']}
+
+
+""" 
+Таблица ссылок в подпунктах проекта 
+Связывается с проектом по его id
+"""
 class Link(BaseModel):
 	id = AutoField()  # Auto-incrementing primary key.
 	project_id = ForeignKeyField(Project, backref='project_id')
@@ -33,74 +58,119 @@ class Link(BaseModel):
 
 	class Meta:
 		table_name = 'links'
+		
+	def get_env_data_path() -> str:
+		return 'LINK_DATA'
+		
+	def insert_data(**data) -> dict:
+		error = None
+		try:
+			row = Link(url=data["url"], 
+										project_id=data["project_id"],
+										name=data["name"])
+			row.save()
+		except Exception as e:
+				error = e
+		if not error is None:
+			return {"Status": "Error", "Error desc": error, "row": data['name']}
+		else:
+			return {"Status": "Success", "row": data['name']}
 
 
-def create_schema() -> None:
-	db.create_tables([Project, Link])
+""" 
+Таблица фотографий в подпунктах проекта 
+Связывается с проектом по его id
+"""
+class Photo(BaseModel):
+	id = AutoField()  # Auto-incrementing primary key.
+	project_id = ForeignKeyField(Project, backref='project_id')
+	name = CharField()
+	text = CharField()
+	position = IntegerField()
+
+	class Meta:
+		table_name = 'photos'
+		
+	def get_env_data_path() -> str:
+		return 'PHOTO_DATA'
+
+	def insert_data(**data) -> dict:
+		error = None
+		try:
+			row = Photo(text=data["text"], 
+										project_id=data["project_id"],
+										position=data["position"],
+										name=os.path.join("assets", data["name"]))
+			row.save()
+		except Exception as e:
+				error = e
+		if not error is None:
+			return {"Status": "Error", "Error desc": error, "row": data['name']}
+		else:
+			return {"Status": "Success", "row": data['name']}
 
 
-def fill_db() -> None:
+""" Создание таблиц """
+def create_schema(fill: bool=False) -> None:
+	print("< CREATING TABLES >")
+	tables = [Project, Link, Photo]
+	print(f"creating tables: {tables}")
+	print("database file path:", DB_PATH)
+	global db
+	db.create_tables(tables)
+	if fill:
+		fill_tables(tables)
+
+
+""" Заполнение всех таблиц данными """
+def fill_tables(tables: list) -> None:
 	errors = list()
-	PROJECTS_DATA = os.getenv("PROJECTS_DATA")
-	with open(PROJECTS_DATA, encoding='utf-8') as f:
-		projects_arr = json.load(f)
-		for project in projects_arr:
-			resp = add_project(**project)
-			if resp["Status"] == "Error":
-				errors.append(resp)
-	LINKS_DATA = os.getenv("LINKS_DATA")
-	with open(LINKS_DATA, encoding='utf-8') as f:
-		links_arr = json.load(f)
-		for link in links_arr:
-			resp = add_link(**link)
-			if resp["Status"] == "Error":
-				errors.append(resp)
+	for table in tables:
+		resp = insert_json_data(table)
+		errors.extend(resp)
 
-	print("Inserted data to db !")
-	print(f"Errors: {len(errors)}")
-	if len(errors) != 0:
+	print("< Inserted data to db ! >")
+	print("< info: >")
+	print(f"Insert errors: {len(errors)}")
+	if len(errors) > 0:
+		print("---")
 		for i, err in enumerate(errors):
 			print(f"{i}. {err}")
+		print("---")
+	print('cache_size:', db.cache_size)
+	print('foreign_keys:', db.foreign_keys)
+	print('journal_mode:', db.journal_mode)
+	print('page_size:', db.page_size)
 
 
-def add_project(**project_data) -> dict:
-	error = None
-	try:
-		photo_path = os.path.join("assets", project_data["photo"])
-		project = Project(name=project_data["name"],
-											desc=project_data["desc"],
-											photo=photo_path)
-		project.save()
-	except Exception as e:
-			error = e
-	if not error is None:
-		return {"Status": "Error", "Error desc": error, "row": project_data['name']}
-	else:
-		return {"Status": "Success", "row": project_data['name']}
+""" Заполнение таблицы данными из json"""
+def insert_json_data(table) -> list:
+	errors = list()
+	data = os.getenv(table.get_env_data_path())
+	with open(data, encoding='utf-8') as f:
+		arr = json.load(f)
+		for link in arr:
+			resp = table.insert_data(**link)
+			if resp["Status"] == "Error":
+				errors.append(resp)
+	return errors
 
 
-def add_link(**link_data) -> dict:
-	error = None
-	try:
-		link = Link(url=link_data["url"], 
-									project_id=link_data["project_id"],
-									name=link_data["name"])
-		link.save()
-	except Exception as e:
-			error = e
-	if not error is None:
-		return {"Status": "Error", "Error desc": error, "row": link_data['name']}
-	else:
-		return {"Status": "Success", "row": link_data['name']}
+""" Достает проект по id """
+def get_project_by_id(id: int):
+	return Project.select().where(Project.id==id)[0]
 
 
+""" Достает все проекты в базе """
 def get_all_projects():
 	return Project.select().order_by(Project.created_date)
 
 
+""" Достает все ссылки для конкретного проекта """
 def get_project_links(project_id: int):
 	return Link.select().where(Link.project_id==project_id)
 
 
-def get_project_by_id(id: int):
-	return Project.select().where(Project.id==id)[0]
+""" Достает все фото для конкретного проекта """
+def get_project_photos(project_id: int):
+	return Photo.select().where(Photo.project_id==project_id)
